@@ -1,0 +1,48 @@
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0b0b0f;
+  padding: 24px;
+}
+
+.error-content {
+  text-align: center;
+  background-color: #12121a;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.error-content h1 {
+  color: #f7f7fb;
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.error-content p {
+  color: #b6b6c9;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+.error-content button {
+  background-color: #7c5cff;
+  color: #f7f7fb;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.error-content button:hover {
+  background-color: #9a84ff;
+}
+
