@@ -8,5 +8,16 @@ export const getAtHomeServer = async (chapterId) => {
 export const buildChapterPageUrls = ({ baseUrl, chapter, useDataSaver = false }) => {
   if (!baseUrl || !chapter?.hash) return [];
   const files = useDataSaver ? chapter.dataSaver : chapter.data;
-  return files.map((file) => `${baseUrl}/${useDataSaver ? 'data-saver' : 'data'}/${chapter.hash}/${file}`);
+  if (!files || !files.length) return [];
+
+  // Normalize baseUrl (no trailing slash)
+  const normalizedBase = baseUrl.replace(/\/+$/, '');
+
+  // Ensure we build safe URLs (encode filenames). Some CDNs are sensitive to
+  // characters in filenames and require proper encoding.
+  return files.map((file) => {
+    const encoded = encodeURIComponent(file);
+    const folder = useDataSaver ? 'data-saver' : 'data';
+    return `${normalizedBase}/${folder}/${chapter.hash}/${encoded}`;
+  });
 };
