@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+// Use a proxied base URL in development so the browser doesn't hit CORS on the
+// remote API. Vite will proxy `/api` to the real Mangadex API (see vite.config).
+const baseURL = import.meta.env.DEV ? '/api' : 'https://api.mangadex.org';
+
 const client = axios.create({
-  baseURL: 'https://api.mangadex.org',
+  baseURL,
   timeout: 10000,
   headers: {
     Accept: 'application/json',

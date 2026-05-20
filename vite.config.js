@@ -8,5 +8,14 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
     strictPort: true,
+    proxy: {
+      // Proxy `/api/*` to the real Mangadex API to avoid CORS in development
+      '/api': {
+        target: 'https://api.mangadex.org',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   },
 });
