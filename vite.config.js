@@ -8,6 +8,9 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
     strictPort: true,
+    // Allow access from this hostname when developing behind a custom domain
+    // (e.g. tunneling or custom local DNS). Add more hosts as needed.
+    allowedHosts: ['manga.brayanalvz.xyz'],
     proxy: {
       // Proxy `/api/*` to the real Mangadex API to avoid CORS in development
       '/api': {
